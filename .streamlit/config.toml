@@ -1,2 +1,6 @@
+[server]
+showEmailPrompt=false
+runOnSave=true
+
 [theme]
 base='dark'
