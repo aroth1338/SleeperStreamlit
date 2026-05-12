@@ -2,6 +2,7 @@ import streamlit as st
 from utils.sleeper import get_rosters
 import nflreadpy as nfl
 import polars as pl
+import time
 
 st.header("Roster")
 
@@ -42,9 +43,9 @@ def player_card(gsis_id, position):
 
 
 
-from utils.player_stats import __get_position_top_36
+# from utils.player_stats import __get_position_top_36
 
-__get_position_top_36(st.session_state.selected_league, "WR")
+# __get_position_top_36(st.session_state.selected_league, "WR")
 
 # for row in player_data.iter_rows(named=True):
 #     player_card(row['gsis_id'], row['position'])

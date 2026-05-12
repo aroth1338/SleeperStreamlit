@@ -1,7 +1,6 @@
 import streamlit as st
 from utils.sleeper import get_sleeper_leagues, load_sleeper_players
 
-
 if "_initialized" not in st.session_state:
     get_sleeper_leagues()
     st.stop()
