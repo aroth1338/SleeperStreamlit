@@ -6,9 +6,16 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "httpx>=0.28.1",
+    "nflreadpy>=0.1.5",
+    "pandas>=2.3.3",
     "streamlit>=1.55.0",
     "viper",
 ]
 
 [tool.uv.sources]
 viper = { git = "https://github.com/aroth1338/Viper.git" }
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.2.0",
+]

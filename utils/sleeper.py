@@ -47,7 +47,7 @@ def get_sleeper_leagues():
     )
 
     st.html("<h3>League Year</h3>")
-    st.selectbox(
+    league_year = st.selectbox(
         label = "leagues",
         options = years,
         key = "year_select",
@@ -78,9 +78,10 @@ def get_sleeper_leagues():
             st.session_state.sleeper_client = sleeper_client
             st.session_state.user_info = user_info.json()
             st.session_state.user_id = st.session_state.user_info['user_id']
+            st.session_state.league_year = league_year
 
             league_data = st.session_state.sleeper_client.get(
-                f"{st.session_state.user_id}/leagues/nfl/2025"
+                f"{st.session_state.user_id}/leagues/nfl/{league_year}"
             ).json()
 
             st.session_state.leagues = {
@@ -108,3 +109,12 @@ def load_sleeper_players(separate_thread = True):
         add_script_run_ctx(thread, get_script_run_ctx()).start()
     else:
         _fetch_players()
+
+@st.cache_data()
+def get_rosters(league_id):
+    client = httpx.Client(
+        base_url=f"https://api.sleeper.app/v1/league/{league_id}/rosters"
+    )
+
+    rosters = client.get("")
+    return rosters.json()
